@@ -1,0 +1,13 @@
+{
+    "presets": [
+        ["@babel/preset-env"]
+    ],
+    "plugins": [
+        ["component", //去掉此处的[]，即可正常运行
+            {
+                "libraryName": "mint-ui",
+                "style": true
+            }
+        ]
+    ]
+}
