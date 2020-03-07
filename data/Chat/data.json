@@ -1,0 +1,83 @@
+{
+    "result": [{
+            "id": 1,
+            "userPic": "./data/Chat/1.jpg",
+            "username": "Chat",
+            "Message": "你好再见  可以谢谢",
+            "time": "",
+            "me": true
+        },
+        {
+            "id": 2,
+            "userPic": "./data/Chat/1.jpg",
+            "username": "Chat",
+            "Message": "你好再见 可以谢谢 sssssssss你好再见 可以谢谢 你好再见 可以谢谢 你好再见 可以谢谢",
+            "time": "",
+            "me": false
+        },
+        {
+            "id": 3,
+            "userPic": "./data/Chat/1.jpg",
+            "username": "Chat",
+            "Message": "你好再见可  以谢谢",
+            "time": "",
+            "me": false
+        },
+        {
+            "id": 4,
+            "userPic": "./data/Chat/1.jpg",
+            "username": "Chat",
+            "Message": "你好再见可以谢s谢s",
+            "time": "",
+            "me": true
+        },
+        {
+            "id": 5,
+            "userPic": "./data/Chat/1.jpg",
+            "username": "Chat",
+            "Message": "你好再见可以谢谢",
+            "time": "",
+            "me": false
+        },
+        {
+            "id": 6,
+            "userPic": "./data/Chat/1.jpg",
+            "username": "Chat",
+            "Message": "你好再见可以谢谢",
+            "time": "",
+            "me": true
+        },
+        {
+            "id": 7,
+            "userPic": "./data/Chat/1.jpg",
+            "username": "Chat",
+            "Message": "你好再见可以谢谢",
+            "time": "",
+            "me": false
+        },
+        {
+            "id": 8,
+            "userPic": "./data/Chat/1.jpg",
+            "username": "Chat",
+            "Message": "你好再见可以谢谢",
+            "time": "",
+            "me": true
+        },
+        {
+            "id": 9,
+            "userPic": "./data/Chat/1.jpg",
+            "username": "Chat",
+            "Message": "你好再见可以谢谢",
+            "time": "",
+            "me": true
+        },
+        {
+            "id": 10,
+            "userPic": "./data/Chat/1.jpg",
+            "username": "Chat",
+            "Message": "你好再见可以谢谢",
+            "time": "",
+            "me": true
+        }
+    ]
+}
