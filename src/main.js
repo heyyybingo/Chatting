@@ -1,5 +1,6 @@
 // webpack程序入口
 import Vue from 'vue'
+import store from './store/index.js'
 import app from './App.vue'
 import router from './router.js'
 import {
@@ -15,6 +16,7 @@ import "./lib/font/font_5t72js5db3t/iconfont.css"
 Vue.component(Header.name, Header);
 const vm = new Vue({
     router,
+    store,
     el: '#app',
     render: c => c(app)
 })

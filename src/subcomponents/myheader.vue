@@ -1,7 +1,7 @@
 <template>
   <div class="myheader-container">
     <!--左侧 后退 -->
-    <span class="iconfont icon-houtui"></span>
+    <span class="iconfont icon-houtui" @touchend="back"></span>
 
     <!--中间 标题栏 -->
     <h3 class="title" v-text="titlestr"></h3>
@@ -21,7 +21,11 @@ export default {
     };
   },
   components: {},
-  methods: {}
+  methods: {
+    back() {
+      this.$router.back();
+    }
+  }
 };
 </script>
 

@@ -1,7 +1,7 @@
 <template>
-  <div class="chat-container">
+  <div class="chat-container" ref="chatContainer">
     <!-- 聊天框 -->
-    <div class="chatRoom">
+    <div class="chatRoom" ref="chatRoom">
       <!-- 每一列用户发送的信息 -->
       <div
         class="message-content"
@@ -11,7 +11,8 @@
       >
         <div class="box"></div>
         <!-- 用户头像，在左侧 -->
-        <img class="user-pic" :src="item.userPic" v-if="!item.me" />
+
+        <img class="user-pic" :src="item.userPic" v-if="!item.me" width="40px" height="40px" />
         <!-- 右侧用户名称，以及信息 -->
         <div class="user-info">
           <div class="user-name">{{item.username}}</div>
@@ -19,7 +20,7 @@
           <div class="user-message">{{item.Message}}</div>
         </div>
 
-        <img class="user-pic" :src="item.userPic" v-if="item.me" />
+        <img class="user-pic" :src="item.userPic" v-if="item.me" width="40px" height="40px" />
       </div>
     </div>
     <!-- 底部输入 -->
@@ -70,9 +71,17 @@ export default {
       } else {
         this.speakText = "";
       }
+    },
+    msgList(newVal, oldVal) {
+      this.$nextTick(() => {
+        let chatRoom = this.$refs.chatRoom;
+        document.body.scrollTop = chatRoom.scrollHeight;
+      });
     }
   },
   created() {
+    this.$store.commit("ShowHeader");
+    this.$store.commit("HideFooter");
     this.axios.get("./data/Chat/data.json").then(result => {
       console.log(result);
       this.msgList = result.data.result;
@@ -94,8 +103,6 @@ export default {
       display: flex;
       .user-pic {
         margin-top: 2%;
-        height: 100%;
-        width: 40px;
       }
       .user-info {
         width: 35%;
