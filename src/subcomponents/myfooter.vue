@@ -19,7 +19,7 @@ export default {
 <style lang="scss" scoped>
 .footer-container {
   z-index: 1000;
-  color: white;
+
   position: fixed;
   bottom: 0;
   left: 0;

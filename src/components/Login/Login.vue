@@ -125,16 +125,15 @@ export default {
           line-height: 30px;
         }
         input {
-          border: 2px solid #a0b3b0;
           flex-grow: 1;
           text-align: center;
-          font-size: 20px;
+          font-size: 18px;
 
           &:placeholder-shown {
             text-align: center;
           }
           outline-style: none;
-
+          border: 0px;
           width: 50%;
         }
         .btn-checkcode {
