@@ -11,25 +11,38 @@
       <div class="group">
         <div class="group-row">
           <div class="box"></div>
-          <input type="text" required placeholder="请输入手机号" />
-          <input
+          <input type="text" required placeholder="请输入昵称" v-model="userName" />
+          <div class="box"></div>
+          <!-- <input
             type="button"
             class="box btn-checkcode"
             :class="{'btn-checkcode-touched':checkbtnTouched}"
             @touchend="checkbtnTouchEnd"
             :value="checkbtnStr"
-          />
+          />-->
         </div>
         <div class="underline"></div>
       </div>
 
       <div class="group">
         <div class="group-row">
-          <div class="box"></div>
-          <input type="text" required placeholder="验证码" />
-          <div class="box"></div>
+          <div class="box box-radio"></div>
+          <!-- <input type="text" required placeholder="验证码" /> -->
+          <label>你的性别:</label>
+          <input type="radio" name="self-sex" value="男" v-model="selfSex" />男
+          <input type="radio" name="self-sex" value="女" v-model="selfSex" />女
+          <div class="box box-radio"></div>
         </div>
-        <div class="underline"></div>
+        <div class="group-row">
+          <div class="box box-radio"></div>
+          <!-- <input type="text" required placeholder="验证码" /> -->
+          <label>匹配性别:</label>
+          <input type="radio" name="find-sex" value="男" v-model="findSex" />男
+          <input type="radio" name="find-sex" value="女" v-model="findSex" />女
+          <input type="radio" name="find-sex" value="不限" v-model="findSex" />不限
+          <div class="box box-radio"></div>
+        </div>
+        <!-- <div class="underline"></div> -->
       </div>
 
       <div class="btn-container">
@@ -48,13 +61,17 @@
 </template>
 
 <script type="text/ecmascript-6">
+import { MessageBox, Toast } from "mint-ui";
 export default {
   name: "",
   data() {
     return {
-      checkbtnStr: "获取验证码",
-      checkbtnTouched: false,
-      loginbtnTouched: false
+      // checkbtnStr: "获取验证码",
+      // checkbtnTouched: false,
+      loginbtnTouched: false,
+      userName: "",
+      selfSex: "",
+      findSex: "不限"
     };
   },
   components: {},
@@ -79,12 +96,49 @@ export default {
       }, 1000);
     },
     login() {
+      //检测输入信息是否有问题
+      if (this.userName === "") {
+        Toast("请输入用户名");
+        return;
+      }
+      if (this.selfSex === "") {
+        Toast("请输入性别");
+        return;
+      }
+      if (this.findSex === "") {
+        Toast("请输入匹配性别");
+        return;
+      }
+
       this.loginbtnTouched = true;
-      setTimeout(() => {
-        this.loginbtnTouched = false;
-        console.log(this.$router);
-        this.$router.push("/chat");
-      }, 2000);
+      // 弹出提示框确认信息
+      let message =
+        "昵称:" +
+        this.userName +
+        ";" +
+        "性别:" +
+        this.selfSex +
+        ";" +
+        "匹配:" +
+        this.findSex;
+      MessageBox.confirm(message)
+        .then(action => {
+          console.log(action);
+          let userInfo = {
+            userName: this.userName,
+            selfSex: this.selfSex,
+            findSex: this.findSex
+          };
+          this.$store.commit("SetuserInfo", userInfo);
+          this.$store.commit("Login");
+          this.loginbtnTouched = false;
+
+          this.$router.push("/chat");
+        })
+        .catch(err => {
+          console.log(err);
+          this.loginbtnTouched = false;
+        });
     }
   },
   created() {
@@ -124,7 +178,7 @@ export default {
           height: 30px;
           line-height: 30px;
         }
-        input {
+        input[type="text"] {
           flex-grow: 1;
           text-align: center;
           font-size: 18px;
@@ -136,21 +190,29 @@ export default {
           border: 0px;
           width: 50%;
         }
-        .btn-checkcode {
-          -webkit-appearance: none;
-          border: 0;
-          outline: none;
-          border-radius: 0;
-          font-size: 10px;
-          color: rgb(189, 158, 154);
-          border: 1px solid rgb(245, 229, 227);
-          box-shadow: 0.1px 0.1px 2px 1px #1ab188;
-          transition: all 0.51s ease;
+        .box-radio {
+          width: 10%;
         }
-        .btn-checkcode-touched {
-          border-radius: 50px;
-          box-shadow: 0.1px 0.1px 2px 3px #1ab188;
+        label {
         }
+        input[type="radio"] {
+          margin-left: 5%;
+        }
+        // .btn-checkcode {
+        //   -webkit-appearance: none;
+        //   border: 0;
+        //   outline: none;
+        //   border-radius: 0;
+        //   font-size: 10px;
+        //   color: rgb(189, 158, 154);
+        //   border: 1px solid rgb(245, 229, 227);
+        //   box-shadow: 0.1px 0.1px 2px 1px #1ab188;
+        //   transition: all 0.51s ease;
+        // }
+        // .btn-checkcode-touched {
+        //   border-radius: 50px;
+        //   box-shadow: 0.1px 0.1px 2px 3px #1ab188;
+        // }
       }
       .underline {
         margin: 0 auto;

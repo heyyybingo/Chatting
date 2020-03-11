@@ -12,7 +12,10 @@ const router = new VueRouter({
         },
         {
             path: '/login',
-            component: resolve => require(['./components/Login/Login.vue'], resolve)
+            component: resolve => require(['./components/Login/Login.vue'], resolve),
+            meta: {
+                isLogin: false
+            }
         },
         {
             path: '/register',
@@ -20,9 +23,15 @@ const router = new VueRouter({
         },
         {
             path: '/chat',
-            component: resolve => require(['./components/Chat/Chat.vue'], resolve)
+            component: resolve => require(['./components/Chat/Chat.vue'], resolve),
+            meta: {
+                isLogin: true
+            }
         },
     ]
 })
+
+
+
 
 export default router

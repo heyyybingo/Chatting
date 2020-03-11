@@ -51,14 +51,38 @@
 
 <script type="text/ecmascript-6">
 export default {
-  name: "",
+  name: "Chat",
+  sockets: {
+    connect() {
+      console.log("client connected");
+      // 连接后登录
+      let userInfo = this.$store.state.userInfo;
+      console.log(userInfo);
+      // 发送用户信息并登录
+      this.$socket.emit("login", userInfo);
+    },
+    disconnect() {
+      console.log("client disconnected");
+    },
+    acceptPair() {
+      // 接受配对对象信息
+    },
+    acceptMsg() {
+      // 接受消息
+    },
+    logout() {
+      //服务端强制登出
+      this.$router.back();
+    }
+  },
   data() {
     return {
       disabled: false,
       speakText: "",
       smileTouched: false,
       otherTouched: false,
-      msgList: []
+      msgList: [],
+      isPairing: false //正在配对
     };
   },
   components: {},
@@ -80,12 +104,17 @@ export default {
     }
   },
   created() {
+    console.log(this.$store.state.userInfo);
     this.$store.commit("ShowHeader");
     this.$store.commit("HideFooter");
     this.axios.get("./data/Chat/data.json").then(result => {
       console.log(result);
       this.msgList = result.data.result;
     });
+    this.$socket.connect();
+  },
+  beforeDestroy() {
+    this.$socket.disconnect();
   }
 };
 </script>
