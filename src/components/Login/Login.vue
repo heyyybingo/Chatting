@@ -2,16 +2,25 @@
   <div class="login-container">
     <!-- 图标 -->
     <div class="img-container">
-      <img src="src/lib/image/theme.jpg" height="100%" width="100%" />
+      <input
+        type="file"
+        ref="userPic"
+        accept="image/*"
+        capture="camera"
+        style="display:none;"
+        @change="showImg"
+        multiple
+      />
+      <img :src="imgURL" ref="userPicdisplay" height="100%" width="100%" @click="uploadImg" />
     </div>
-    <h3>Hey Chat!</h3>
+    <h3>点击图片上传头像</h3>
     <!-- 输入框内容 -->
 
     <form class="form-group">
       <div class="group">
         <div class="group-row">
           <div class="box"></div>
-          <input type="text" required placeholder="请输入昵称" v-model="userName" />
+          <input type="text" required placeholder="请输入昵称" v-model="userName" maxlength="12" />
           <div class="box"></div>
           <!-- <input
             type="button"
@@ -51,7 +60,7 @@
           :class="{'btn-login-touched':loginbtnTouched}"
           type="button"
           value="Get Started"
-          @touchend="login"
+          @click="login"
         />
       </div>
     </form>
@@ -61,7 +70,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { MessageBox, Toast } from "mint-ui";
+import getIOS from "../../lib/js/getIOS";
 export default {
   name: "",
   data() {
@@ -71,7 +80,8 @@ export default {
       loginbtnTouched: false,
       userName: "",
       selfSex: "",
-      findSex: "不限"
+      findSex: "不限",
+      imgURL: "src/lib/image/theme.jpg"
     };
   },
   components: {},
@@ -95,18 +105,31 @@ export default {
         }
       }, 1000);
     },
+    uploadImg() {
+      this.$refs.userPic.click();
+    },
+    showImg() {
+      let reader = new FileReader();
+
+      reader.onload = e => {
+        console.log(reader.result);
+        console.log(this.$refs.userPicdisplay);
+        this.imgURL = reader.result;
+      };
+      reader.readAsDataURL(this.$refs.userPic.files[0]);
+    },
     login() {
       //检测输入信息是否有问题
       if (this.userName === "") {
-        Toast("请输入用户名");
+        this.$toast("请输入用户名");
         return;
       }
       if (this.selfSex === "") {
-        Toast("请输入性别");
+        this.$toast("请输入性别");
         return;
       }
       if (this.findSex === "") {
-        Toast("请输入匹配性别");
+        this.$toast("请输入匹配性别");
         return;
       }
 
@@ -121,29 +144,44 @@ export default {
         ";" +
         "匹配:" +
         this.findSex;
-      MessageBox.confirm(message)
+
+      console.log(message);
+      this.$messagebox({
+        title: "Notice",
+        message,
+        showCancelButton: true
+      })
         .then(action => {
           console.log(action);
           let userInfo = {
             userName: this.userName,
             selfSex: this.selfSex,
-            findSex: this.findSex
+            findSex: this.findSex,
+            userPic: this.imgURL
           };
           this.$store.commit("SetuserInfo", userInfo);
           this.$store.commit("Login");
-          this.loginbtnTouched = false;
 
-          this.$router.push("/chat");
+          if (action === "confirm") {
+            this.$router.push("/chat");
+          }
+          this.loginbtnTouched = true;
         })
-        .catch(err => {
-          console.log(err);
-          this.loginbtnTouched = false;
-        });
+        .catch(err => {});
     }
   },
   created() {
+    console.log(this.$refs);
     this.$store.commit("HideHeader");
     this.$store.commit("ShowFooter");
+  },
+
+  mounted() {
+    console.log(getIOS());
+    if (getIOS() && this.$refs.userPic) {
+      console.log("removed");
+      this.$refs.userPic.removeAttribute("capture");
+    }
   }
 };
 </script>
@@ -156,9 +194,12 @@ export default {
   left: 0;
   right: 0;
   .img-container {
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 100px;
     margin: 0 auto;
+    img {
+      border-radius: 3px;
+    }
   }
   h3 {
     text-align: center;

@@ -19,6 +19,10 @@ const mutations = {
         state.userInfo = userInfo
         window.sessionStorage.setItem('userInfo', userInfo)
     },
+    SetTitlestr(state, titlestr) {
+        state.titlestr = titlestr
+        window.sessionStorage.setItem('titlestr', titlestr)
+    },
     Login(state) {
         state.isLogin = true
         window.sessionStorage.setItem('isLogin', true)

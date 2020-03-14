@@ -7,21 +7,38 @@ import router from './router.js'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueSocketIO from 'vue-socket.io'
+import VueTouch from 'vue-touch'
+
+import {
+    MessageBox,
+    Toast,
+    Indicator
+} from "mint-ui";
+
+// vue触摸
 
 Vue.use(VueAxios, axios)
 
 Vue.use(new VueSocketIO({
     debug: true,
-    connection: 'http://127.0.0.1:3000/',
+    connection: 'http://192.168.0.108:3000/',
     options: {
         autoConnect: false
     }
 }))
+Vue.use(VueTouch, {
+    name: 'v-touch'
+})
+Vue.prototype.$messagebox = MessageBox
+Vue.prototype.$toast = Toast
+Vue.prototype.$indicator = Indicator
 
 // 表情、更多、语音、加号
-import "./lib/font/font_5t72js5db3t/iconfont.css"
+import "./lib/font/font_xpmyn2gz23g/iconfont.css"
 // 路由前检测
 router.beforeEach((to, from, next) => {
+    // 由于messagebox有一个bug，当不点击到区域内时，框会消失，但仍然存在，
+    MessageBox.close();
     let isLogin = store.state.isLogin
     console.log(isLogin)
     if (to.meta.isLogin === isLogin) {

@@ -4,7 +4,7 @@
     <span class="iconfont icon-houtui" @touchend="back"></span>
 
     <!--中间 标题栏 -->
-    <h3 class="title" v-text="titlestr"></h3>
+    <h3 class="title" v-text="this.$store.state.titlestr"></h3>
 
     <!-- 右侧 更多 -->
     <span class="iconfont icon-icon_more"></span>
@@ -13,11 +13,11 @@
 
 <script type="text/ecmascript-6">
 export default {
+  props: ["titlestr"],
   name: "",
   data() {
     return {
       // 主题显示
-      titlestr: "HelloChat"
     };
   },
   components: {},
