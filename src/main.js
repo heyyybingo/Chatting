@@ -35,6 +35,7 @@ Vue.prototype.$indicator = Indicator
 
 // 表情、更多、语音、加号
 import "./lib/font/font_xpmyn2gz23g/iconfont.css"
+import "./lib/image/1.jpg"
 // 路由前检测
 router.beforeEach((to, from, next) => {
     // 由于messagebox有一个bug，当不点击到区域内时，框会消失，但仍然存在，

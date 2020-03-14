@@ -81,7 +81,7 @@ export default {
       userName: "",
       selfSex: "",
       findSex: "不限",
-      imgURL: "src/lib/image/theme.jpg"
+      imgURL: "src/lib/image/1.jpg"
     };
   },
   components: {},
