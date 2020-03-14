@@ -21,7 +21,7 @@ Vue.use(VueAxios, axios)
 
 Vue.use(new VueSocketIO({
     debug: true,
-    connection: 'http://192.168.0.108:3000/',
+    connection: 'http://www.heyyybingo.site:3000/',
     options: {
         autoConnect: false
     }
