@@ -18,15 +18,15 @@
 
   - 输入信息
 
-    <img src="/home/caoqiubin/.config/Typora/typora-user-images/image-20200318171401297.png" alt="image-20200318171401297" style="zoom:50%;" />
+    <img src="./typora-user-images/image-20200318171401297.png" alt="image-20200318171401297" style="zoom:50%;" />
 
   - 上传头像
 
-    <img src="/home/caoqiubin/.config/Typora/typora-user-images/image-20200318171457622.png" alt="image-20200318171457622" style="zoom:50%;" />
+    <img src="./typora-user-images/image-20200318171457622.png" alt="image-20200318171457622" style="zoom:50%;" />
 
   - 确认登入
 
-    <img src="/home/caoqiubin/.config/Typora/typora-user-images/image-20200318171641062.png" alt="image-20200318171641062" style="zoom:50%;" />
+    <img src="./typora-user-images/image-20200318171641062.png" alt="image-20200318171641062" style="zoom:50%;" />
 
      
 
@@ -34,20 +34,20 @@
 
   - 配对过程
 
-    <img src="/home/caoqiubin/.config/Typora/typora-user-images/image-20200318171805130.png" alt="image-20200318171805130" style="zoom:50%;" />
+    <img src="./typora-user-images/image-20200318171805130.png" alt="image-20200318171805130" style="zoom:50%;" />
 
   - 配对成功
 
-    <img src="/home/caoqiubin/.config/Typora/typora-user-images/image-20200318172035295.png" alt="image-20200318172035295" style="zoom:50%;" />
+    <img src="./typora-user-images/image-20200318172035295.png" alt="image-20200318172035295" style="zoom:50%;" />
 
-    <img src="/home/caoqiubin/.config/Typora/typora-user-images/image-20200318172058378.png" alt="image-20200318172058378" style="zoom:50%;" />
+    <img src="./typora-user-images/image-20200318172058378.png" alt="image-20200318172058378" style="zoom:50%;" />
 
   - 滑动进入下一轮匹配
 
-    <img src="/home/caoqiubin/.config/Typora/typora-user-images/image-20200318172229583.png" alt="image-20200318172229583" style="zoom:50%;" />
+    <img src="./typora-user-images/image-20200318172229583.png" alt="image-20200318172229583" style="zoom:50%;" />
 
     对方收到通知后自动进入下一轮匹配
 
-    <img src="/home/caoqiubin/.config/Typora/typora-user-images/image-20200318172324383.png" alt="image-20200318172324383" style="zoom:50%;" />
+    <img src="./typora-user-images/image-20200318172324383.png" alt="image-20200318172324383" style="zoom:50%;" />
 
     
